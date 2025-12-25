@@ -115,26 +115,29 @@ GROUP BY v.vehicle_id, v.name
 HAVING COUNT(*) > 2;
 ```
 Query 1: Retrieve booking info with customer & vehicle names:
-| Booking ID | Customer Name | Vehicle Name | Start Date | End Date   |
-| ---------- | ------------- | ------------ | ---------- | ---------- |
-| 1          | John Doe      | Toyota Camry | 2025-12-01 | 2025-12-05 |
-| 2          | Jane Smith    | Honda Civic  | 2025-12-02 | 2025-12-06 |
+| booking_id | customer_name | vehicle_name   | start_date | end_date   | status    |
+| ---------- | ------------- | -------------- | ---------- | ---------- | --------- |
+| 1          | Alice         | Honda Civic    | 2023-10-01 | 2023-10-05 | completed |
+| 2          | Alice         | Honda Civic    | 2023-11-01 | 2023-11-03 | completed |
+| 3          | Charlie       | Honda Civic    | 2023-12-01 | 2023-12-02 | confirmed |
+| 4          | Alice         | Toyota Corolla | 2023-12-10 | 2023-12-12 | pending   |
 
-Query 2: Count total bookings per customer
-| Customer Name | Total Bookings |
-| ------------- | -------------- |
-| John Doe      | 3              |
-| Jane Smith    | 2              |
 
-Query 3: List all available vehicles (not booked)
-| Vehicle ID | Vehicle Name  | Type  | Price/Day |
-| ---------- | ------------- | ----- | --------- |
-| 3          | Nissan Altima | Sedan | 50        |
-| 4          | Ford Explorer | SUV   | 80        |
+Query 2(EXISTS): Find all vehicles that have never been booked.
+| vehicle_id | name       | type  | model | registration_number | rental_price | status      |
+| ---------- | ---------- | ----- | ----- | ------------------- | ------------ | ----------- |
+| 3          | Yamaha R15 | bike  | 2023  | GHI-789             | 30           | available   |
+| 4          | Ford F-150 | truck | 2020  | JKL-012             | 100          | maintenance |
 
-Query 4: Total revenue per vehicle
-| Vehicle Name  | Total Revenue |
-| ------------- | ------------- |
-| Toyota Camry  | 300           |
-| Honda Civic   | 200           |
-| Nissan Altima | 0             |
+
+Query 3(WHERE): Retrieve all available vehicles of a specific type (e.g., cars)
+| vehicle_id | name           | type | model | registration_number | rental_price | status    |
+| ---------- | -------------- | ---- | ----- | ------------------- | ------------ | --------- |
+| 1          | Toyota Corolla | car  | 2022  | ABC-123             | 50           | available |
+
+
+Query 4(GROUP BY and HAVING): Find the total number of bookings for each vehicle and display only those vehicles that have more than 2 bookings.
+| vehicle_name | total_bookings |
+| ------------ | -------------- |
+| Honda Civic  | 3              |
+
