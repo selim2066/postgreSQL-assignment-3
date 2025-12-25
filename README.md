@@ -114,3 +114,7 @@ ON b.vehicle_id = v.vehicle_id
 GROUP BY v.vehicle_id, v.name
 HAVING COUNT(*) > 2;
 ```
+| Booking ID | Customer Name | Vehicle Name | Start Date | End Date   |
+| ---------- | ------------- | ------------ | ---------- | ---------- |
+| 1          | John Doe      | Toyota Camry | 2025-12-01 | 2025-12-05 |
+| 2          | Jane Smith    | Honda Civic  | 2025-12-02 | 2025-12-06 |
