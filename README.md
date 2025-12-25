@@ -114,7 +114,27 @@ ON b.vehicle_id = v.vehicle_id
 GROUP BY v.vehicle_id, v.name
 HAVING COUNT(*) > 2;
 ```
+Query 1: Retrieve booking info with customer & vehicle names:
 | Booking ID | Customer Name | Vehicle Name | Start Date | End Date   |
 | ---------- | ------------- | ------------ | ---------- | ---------- |
 | 1          | John Doe      | Toyota Camry | 2025-12-01 | 2025-12-05 |
 | 2          | Jane Smith    | Honda Civic  | 2025-12-02 | 2025-12-06 |
+
+Query 2: Count total bookings per customer
+| Customer Name | Total Bookings |
+| ------------- | -------------- |
+| John Doe      | 3              |
+| Jane Smith    | 2              |
+
+Query 3: List all available vehicles (not booked)
+| Vehicle ID | Vehicle Name  | Type  | Price/Day |
+| ---------- | ------------- | ----- | --------- |
+| 3          | Nissan Altima | Sedan | 50        |
+| 4          | Ford Explorer | SUV   | 80        |
+
+Query 4: Total revenue per vehicle
+| Vehicle Name  | Total Revenue |
+| ------------- | ------------- |
+| Toyota Camry  | 300           |
+| Honda Civic   | 200           |
+| Nissan Altima | 0             |
